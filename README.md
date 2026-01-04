@@ -54,5 +54,13 @@ export type TicketFormData = z.infer<typeof ticketSchema>;
 ```
 
 
-##Скріншоти, що демонструють роботу
+## Скріншоти, що демонструють роботу
 
+### Сторінка зі списком сутностей
+<img width="998" height="333" alt="image" src="https://github.com/user-attachments/assets/e443e953-0820-4f95-9249-5da8ce51578b" />
+
+### Форма з помилками валідації від Zod
+<img width="1909" height="838" alt="image" src="https://github.com/user-attachments/assets/9e5d5680-4562-4cdb-9e4e-85d932c265d8" />
+
+### Вкладка Network у DevTools (підтвердження HTTP-запитів)
+<img width="892" height="282" alt="image" src="https://github.com/user-attachments/assets/a22c1d5b-d697-4781-9690-a0902f32414f" />
