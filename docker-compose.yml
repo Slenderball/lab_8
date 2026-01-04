@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  db:
+    container_name: app_db
+    image: postgres:16-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: ticket_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+
+  backend:
+    container_name: app_backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "4000:4000"
+    depends_on:
+      - db
+    environment:
+      - PORT=4000
+      - PG_HOST=db
+      - PG_PORT=5432
+      - PG_USERNAME=postgres
+      - PG_PASSWORD=password
+      - PG_DATABASE=ticket_db
+      - JWT_SECRET=secret_key
+      - JWT_EXPIRATION=1h
+
+  frontend:
+    container_name: app_frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+volumes:
+  db_data:

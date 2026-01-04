@@ -1,0 +1,8 @@
+node_modules
+dist
+build
+.env
+postgres_data
+pgadmin_data
+*.log
+.DS_Store
